@@ -15,6 +15,7 @@ world = []
 class Ball:
     def __init__(self):
         self.x = random.randint(100, 700)
+        self.y = 599
         self.image = load_image('ball41x41.png')
 
     def draw(self):
@@ -22,11 +23,12 @@ class Ball:
 
     def update(self):
         for y in range(599, 71, -5):
-            self.image.draw(self.x, y)
+            self.image.draw(self.x, 599)
 
 class Ball2:
     def __init__(self):
         self.x = random.randint(100, 700)
+        self.y = 599
         self.image = load_image('ball21x21.png')
 
     def draw(self):
@@ -34,7 +36,7 @@ class Ball2:
 
     def update(self):
         for y in range(599, 51, -5):
-            self.image.draw(self.x, y)
+            self.image.draw(self.x, 599)
 
 class Grass:
     def __init__(self):
@@ -103,10 +105,10 @@ def reset_world():
     world.append(zombie)
 
 def update_world():
-    global world
+    clear_canvas()
     for o in world:
         o.update()
-    pass
+    update_canvas()
 
 def render_world():
     clear_canvas()
