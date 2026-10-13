@@ -14,13 +14,16 @@ world = []
 
 class Ball:
     def __init__(self):
+        self.x = random.randint(100, 700)
+        self.y = 599
         self.image = load_image('ball41x41.png')
 
-    def update(self):
-        pass
-
     def draw(self):
-        self.image.draw(400, 599)
+        self.image.draw(self.x, 599)
+
+    def update(self):
+        for y in range(599, 71, -5):
+            self.image.draw(self.x, 599)
 
 class Grass:
     def __init__(self):
@@ -74,30 +77,28 @@ def handle_events():
 def reset_world():
     global running
     global world
-    global ball
 
     running = True
-    #world = []
-    #grass = Grass()
-    #world.append(grass)
-    #team = [Boy() for i in range(11)]
-    #world += team
-    #zombie = Zombie()
-    ball = Ball()
-    #world.append(zombie)
+    world = []
+    grass = Grass()
+    world.append(grass)
+    team = [Boy() for i in range(11)]
+    ball_team = [Ball() for i in range(20)]
+    world += team
+    world += ball_team
+    zombie = Zombie()
+    world.append(zombie)
 
 def update_world():
-    #global world
-    #for o in world:
-        #o.update()
-    ball.update()
+    global world
+    for o in world:
+        o.update()
     pass
 
 def render_world():
     clear_canvas()
-    #for o in world:
-        #o.draw()
-    ball.draw()
+    for o in world:
+        o.draw()
     update_canvas()
 
 open_canvas()
