@@ -19,11 +19,10 @@ class Ball:
         self.image = load_image('ball41x41.png')
 
     def draw(self):
-        self.image.draw(self.x, 599)
+        self.image.draw(self.x, self.y)
 
     def update(self):
-        for y in range(599, 71, -5):
-            self.image.draw(self.x, 599)
+        self.y = max(71, self.y - 5)
 
 class Ball2:
     def __init__(self):
@@ -32,11 +31,10 @@ class Ball2:
         self.image = load_image('ball21x21.png')
 
     def draw(self):
-        self.image.draw(self.x, 599)
+        self.image.draw(self.x, self.y)
 
     def update(self):
-        for y in range(599, 51, -5):
-            self.image.draw(self.x, 599)
+        self.y = max(91, self.y - 5)
 
 class Grass:
     def __init__(self):
